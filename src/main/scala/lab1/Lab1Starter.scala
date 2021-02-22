@@ -5,6 +5,7 @@ import common.Helper.Matrix
 object Lab1Starter {
   def main(array: Array[String]) {
     Helper.printVariant()
+    val neDishutePlzTimer = System.currentTimeMillis()
     val (a0, a1, a2, a3) = (1, 5, 9, 15)
     val xMatrix:Matrix = Helper.genMatrix(8,3,21)
     val transMatrix:Matrix=xMatrix.map(tp=>List(tp.head,tp(1),tp(2))).transpose
@@ -21,6 +22,7 @@ object Lab1Starter {
     val yAnswerArray = yArr.map(_ - yAvg)
     val answer = yAnswerArray.filter(_ > 0).min
     val index = yAnswerArray.indexOf(answer)
+    val neDishutePlzTimerEnd = System.currentTimeMillis()
     println(s"X MATRIX :\n${Helper.printMatrix(xMatrix)}")
     println(f"Y VALUES = ${yArr}")
     println(f"X0 VALUES = ${xAvgArr}")
@@ -29,6 +31,7 @@ object Lab1Starter {
     println(f"AVG(Y) = ${yAvg}")
     println(f"AVG(Y) ← = ${answer}")
     println(f"ROW OF ANSWER = \n[${xMatrix(index).mkString("\t")}]")
+    println(f"EXECUTION TIME = ${neDishutePlzTimerEnd-neDishutePlzTimer}")
 
   }
 }
