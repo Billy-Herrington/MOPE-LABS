@@ -27,10 +27,10 @@ public class Lab3 {
         };
 
         int[][] xArr = {
-                {10, -30, -30},
-                {10, 45, 45},
-                {60, -30, 45},
-                {60, 45, -30}
+                {X_1_MIN, X_2_MIN, X_3_MIN},
+                {X_1_MIN, X_2_MAX   ,X_3_MAX},
+                {X_1_MAX, X_2_MIN, X_3_MAX},
+                {X_1_MAX, X_2_MAX, X_3_MIN}
         };
 
         double[][] aKoefs = new double[3][3];
