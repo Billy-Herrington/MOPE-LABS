@@ -324,10 +324,10 @@ public class Lab3 {
         int f3 = f1 * f2;
         double[] studentTable = {2.306, 2.262, 2.228, 2.201, 2.179, 2.16};
 
+        long start = System.nanoTime();
         double stNow = studentTable[f3 - 8];
 
         int d = 4;
-
         if (t[0] < stNow) {
             bArr[0] = 0;
             d--;
@@ -344,7 +344,8 @@ public class Lab3 {
             bArr[3] = 0;
             d--;
         }
-
+        long end = System.nanoTime();
+        System.out.printf("Час пошуку значимих коефіцієнтів: %d \n",end-start);
         System.out.println("Рівняння регресії після критерію Стьюдента: ");
         System.out.printf("y = %.2f", bArr[0]);
         if (bArr[1] < 0) System.out.print(" - ");
