@@ -5,7 +5,7 @@ from functools import partial
 from pyDOE2 import *
 from time import time
 
-
+avg_adekvat_check = []
 def timeit(func):
     def wrapper(*args, **kwargs):
         start = time()
@@ -194,13 +194,15 @@ def check(X, Y, B, n, m):
 
     Gp = kriteriy_cochrana(Y, y_aver, n, m)
     print(f'Gp = {Gp}')
+    start = time()
     if Gp < G_kr:
         print(f'З ймовірністю {1 - q} дисперсії однорідні.')
     else:
         print("Необхідно збільшити кількість дослідів")
         m += 1
         main(n, m)
-
+    end = time()
+    avg_adekvat_check.append(end-start)
     ts = kriteriy_studenta(X[:, 1:], Y, y_aver, n, m)
     print('\nКритерій Стьюдента:\n', ts)
     res = [t for t in ts if t > t_student]
@@ -245,4 +247,7 @@ def main(n, m):
 
 
 if __name__ == '__main__':
-    main(8,3)
+
+    for x in range(1,100):
+        main(8,3)
+    print(f'середній час перевірки адекватності - {sum(avg_adekvat_check)/len(avg_adekvat_check)}')
