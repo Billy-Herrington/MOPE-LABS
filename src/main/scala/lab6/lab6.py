@@ -1,5 +1,7 @@
 from math import fabs, sqrt
+from time import time
 
+avg_check = []
 m = 2
 p = 0.95 #ймовірність
 N = 15
@@ -242,7 +244,10 @@ def run_experiment():
                 m += 1
 
         dispersion_b2 = sum(dispersion_y) / (N * N * m)
+        start = time()
         student_lst = list(student_test(beta))
+        end = time()
+        avg_check.append(end-start)
         print("----------------------------------------------------------------------")
         print("\nОтримане рівняння регресії з урахуванням критерія Стьюдента")
         print("{:.3f} + {:.3f} * X1 + {:.3f} * X2 + {:.3f} * X3 + {:.3f} * Х1X2 + {:.3f} * Х1X3 + {:.3f} * Х2X3"
@@ -264,4 +269,6 @@ def run_experiment():
 
 
 if __name__ == '__main__':
-    run_experiment()
+    for x in range(1,100):
+        run_experiment()
+    print(f'середній час пошуку значимих коефіцієнтів - {sum(avg_check)/len(avg_check)}')
